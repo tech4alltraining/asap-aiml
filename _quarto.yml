@@ -2,19 +2,14 @@ project:
   type: website
   output-dir: docs
 website:
-  title: "A Journey Within"
+  title: "Artificial Intelligence and Machine Learning"
   
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - href: papers.qmd
-        text: Papers
-      - href: workshops.qmd
-        text: Workshops
-      - href: blog.qmd
-        text: Blog
-      - about.qmd
+      - href: logistic.qmd
+        text: Logistic Regression
   sidebar:
     style: "docked"
     logo: "./images/user_image.png"
@@ -24,12 +19,12 @@ website:
       - icon: github
         text: Github
         url: https://github.com
-      - icon: twitter
-        text: Twitter
-        url: https://twitter.com
+      # - icon: twitter
+      #   text: Twitter
+      #   url: https://twitter.com
       - icon: Email
       - text: "Email"
-        url: mailto:siju.swamy@saintgits.org
+        url: mailto:tech4alltraining@gmail.com
       - text: "ORCID"
         url: https://orcid.org/<orcid-id>
       - text: "Google Scholar"

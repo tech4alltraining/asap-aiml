@@ -9,9 +9,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "My Personal Webpage",
+    "title": "Aritificial Intelligence and Machine Learning",
     "section": "",
-    "text": "Welcome to my personal page! I thrive on solving complex problems and love turning innovative ideas into reality. Whether I’m coding, designing, or exploring new fields, I bring dedication and curiosity to everything I do. Outside of work, I enjoy hiking, reading science fiction, and experimenting with new recipes. Here, you’ll find insights into my projects, interests, and the journey I’m on to make a positive impact in the world. Thank you for visiting, and I hope you find something that inspires you!\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "This is the home page for the Artificial Intelligence and Machine Learning training program. Here you will find resources, papers, and workshops related to AI and ML. Feel free to explore the site using the navigation bar above."
   },
   {
     "objectID": "papers.html",
@@ -54,5 +54,54 @@
     "title": "About Me",
     "section": "",
     "text": "I’m a second year Computer Science and Engineering student doing minor in Computational Mathematics with a passion for pushing the boundaries of knowledge in AI. With a strong background in Computer Science, my research focuses on Practive Oriented AI, aiming to contribute to meaningful advancements and solutions."
+  },
+  {
+    "objectID": "logistic.html",
+    "href": "logistic.html",
+    "title": "Logistic Regression — Mapping to the Four Pillars",
+    "section": "",
+    "text": "This Quarto-ready infographic layout summarizes how Logistic Regression connects to the four mathematical pillars of AI. Use this in a Quarto page (markdown) and swap placeholder images with your visuals.\n\n\n\n\nTitle: Logistic Regression — The Four Pillars\nSubtitle: A compact visual guide showing how Linear Algebra, Probability & Statistics, Calculus, and Optimization power logistic regression.\nVisual: full-width banner (left: simple scatter plot with hyperplane; right: 4 icon pillars)\n\n\n\n\n\n\n\n\nShort blurb (1–2 lines): Design matrix (X), weight vector (w), bias (b). Predictions via affine map and sigmoid.\nKey formula block:\n\nz = X w + b \\\\\n\\hat{p} = \\sigma(z) = \\frac{1}{1+e^{-z}}\n\nVisual: diagram of matrix-vector multiplication producing a score; small hyperplane sketch.\n\n\n\n\n\n\nBlurb: Labels modeled as Bernoulli; objective is negative log-likelihood (cross-entropy); interpret coefficients as log-odds.\nKey formula block:\n\n\\mathcal{L}(w) = -\\sum_i \\left[y_i\\log\\hat{p}_i + (1-y_i)\\log(1-\\hat{p}_i)\\right]\n\nVisual: probability slider, calibration curve thumbnail, ROC mini-chart.\n\n\n\n\n\n\nBlurb: Gradients via chain rule drive learning; Hessian gives curvature.\nKey formula block:\n\n\\nabla_w\\mathcal{L} = X^{\\top}(\\hat{p}-y)\\\\\nH = X^{\\top} R X,\\quad R = \\mathrm{diag}(\\hat{p}_i(1-\\hat{p}_i))\n\nVisual: gradient arrow on loss surface.\n\n\n\n\n\n\nBlurb: Use SGD, LBFGS, or Newton (IRLS). Logistic loss is convex — global optimum.\nTips: regularization (L1/L2), feature scaling, learning-rate & convergence, class weighting.\nVisual: optimization trajectory on convex bowl, small table of solvers & when to use them.\n\n\n\n\n\n\n\nGeometry-first demo: show scatter + decision boundary.\nDerivation: step-by-step gradient derivation with chain rule.\nHands-on: small exercise list (derive gradient, implement GD vs IRLS, plot calibration and ROC).\n\n\n\n\nInclude a compact Python snippet (for the Quarto page) that trains logistic regression on a toy dataset and plots calibration and ROC.\n# Compact snippet for Quarto\nfrom sklearn.datasets import make_classification\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import roc_curve, auc, brier_score_loss\n\nX, y = make_classification(500, 4, n_informative=3, flip_y=0.05, class_sep=1.2)\nX_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, test_size=0.3)\nclf = LogisticRegression(max_iter=200)\nclf.fit(X_train, y_train)\nprobs = clf.predict_proba(X_test)[:,1]\n# plot ROC, calibration, etc.\n\n\n\n\n\nQuick checklist for instructors\nCommon pitfalls & remedies\nSuggested visualization assets (list of 5 images: decision boundary, loss surface, calibration curve, ROC, coefficients table)\n\n\n\n\n\n\nAuthor: Ajvad Haneef K\nSuggested tags: Logistic Regression, Linear Algebra, Calculus, Probability, Optimization, ML Education\nSuggested image assets: decision_boundary.png, calibration_curve.png, roc_curve.png, coeff_table.png, pillars_icons.svg\n\nEnd of Quarto infographic layout."
+  },
+  {
+    "objectID": "logistic.html#hero",
+    "href": "logistic.html#hero",
+    "title": "Logistic Regression — Mapping to the Four Pillars",
+    "section": "",
+    "text": "Title: Logistic Regression — The Four Pillars\nSubtitle: A compact visual guide showing how Linear Algebra, Probability & Statistics, Calculus, and Optimization power logistic regression.\nVisual: full-width banner (left: simple scatter plot with hyperplane; right: 4 icon pillars)"
+  },
+  {
+    "objectID": "logistic.html#pillar-grid-2x2",
+    "href": "logistic.html#pillar-grid-2x2",
+    "title": "Logistic Regression — Mapping to the Four Pillars",
+    "section": "",
+    "text": "Short blurb (1–2 lines): Design matrix (X), weight vector (w), bias (b). Predictions via affine map and sigmoid.\nKey formula block:\n\nz = X w + b \\\\\n\\hat{p} = \\sigma(z) = \\frac{1}{1+e^{-z}}\n\nVisual: diagram of matrix-vector multiplication producing a score; small hyperplane sketch.\n\n\n\n\n\n\nBlurb: Labels modeled as Bernoulli; objective is negative log-likelihood (cross-entropy); interpret coefficients as log-odds.\nKey formula block:\n\n\\mathcal{L}(w) = -\\sum_i \\left[y_i\\log\\hat{p}_i + (1-y_i)\\log(1-\\hat{p}_i)\\right]\n\nVisual: probability slider, calibration curve thumbnail, ROC mini-chart.\n\n\n\n\n\n\nBlurb: Gradients via chain rule drive learning; Hessian gives curvature.\nKey formula block:\n\n\\nabla_w\\mathcal{L} = X^{\\top}(\\hat{p}-y)\\\\\nH = X^{\\top} R X,\\quad R = \\mathrm{diag}(\\hat{p}_i(1-\\hat{p}_i))\n\nVisual: gradient arrow on loss surface.\n\n\n\n\n\n\nBlurb: Use SGD, LBFGS, or Newton (IRLS). Logistic loss is convex — global optimum.\nTips: regularization (L1/L2), feature scaling, learning-rate & convergence, class weighting.\nVisual: optimization trajectory on convex bowl, small table of solvers & when to use them."
+  },
+  {
+    "objectID": "logistic.html#pedagogy-section",
+    "href": "logistic.html#pedagogy-section",
+    "title": "Logistic Regression — Mapping to the Four Pillars",
+    "section": "",
+    "text": "Geometry-first demo: show scatter + decision boundary.\nDerivation: step-by-step gradient derivation with chain rule.\nHands-on: small exercise list (derive gradient, implement GD vs IRLS, plot calibration and ROC)."
+  },
+  {
+    "objectID": "logistic.html#practical-code-snippet-callout",
+    "href": "logistic.html#practical-code-snippet-callout",
+    "title": "Logistic Regression — Mapping to the Four Pillars",
+    "section": "",
+    "text": "Include a compact Python snippet (for the Quarto page) that trains logistic regression on a toy dataset and plots calibration and ROC.\n# Compact snippet for Quarto\nfrom sklearn.datasets import make_classification\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import roc_curve, auc, brier_score_loss\n\nX, y = make_classification(500, 4, n_informative=3, flip_y=0.05, class_sep=1.2)\nX_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, test_size=0.3)\nclf = LogisticRegression(max_iter=200)\nclf.fit(X_train, y_train)\nprobs = clf.predict_proba(X_test)[:,1]\n# plot ROC, calibration, etc."
+  },
+  {
+    "objectID": "logistic.html#one-page-summary-bottom",
+    "href": "logistic.html#one-page-summary-bottom",
+    "title": "Logistic Regression — Mapping to the Four Pillars",
+    "section": "",
+    "text": "Quick checklist for instructors\nCommon pitfalls & remedies\nSuggested visualization assets (list of 5 images: decision boundary, loss surface, calibration curve, ROC, coefficients table)"
+  },
+  {
+    "objectID": "logistic.html#metadata",
+    "href": "logistic.html#metadata",
+    "title": "Logistic Regression — Mapping to the Four Pillars",
+    "section": "",
+    "text": "Author: Ajvad Haneef K\nSuggested tags: Logistic Regression, Linear Algebra, Calculus, Probability, Optimization, ML Education\nSuggested image assets: decision_boundary.png, calibration_curve.png, roc_curve.png, coeff_table.png, pillars_icons.svg\n\nEnd of Quarto infographic layout."
   }
 ]
