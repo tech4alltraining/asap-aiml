@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs
 website:
-  title: "Artificial Intelligence and Machine Learning"
+  title: "AIML Course"
   
   navbar:
     left:
@@ -12,23 +12,13 @@ website:
         text: Logistic Regression
   sidebar:
     style: "docked"
-    logo: "./images/user_image.png"
+    logo: "./images/aiml_logo.png"
     search: true
     collapse-level: 2
     contents:
-      - icon: github
-        text: Github
-        url: https://github.com
-      # - icon: twitter
-      #   text: Twitter
-      #   url: https://twitter.com
-      - icon: Email
-      - text: "Email"
-        url: mailto:tech4alltraining@gmail.com
-      - text: "ORCID"
-        url: https://orcid.org/<orcid-id>
-      - text: "Google Scholar"
-        url: https://scholar.google.com/citations?user=<google-scholar-user>
+      - icon: logistic
+        text: Logistic Regression
+        href: logistic.qmd
   announcement: 
     icon: info-circle
     dismissable: true
