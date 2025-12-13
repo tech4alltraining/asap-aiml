@@ -2,7 +2,7 @@
 ---
 <!-- Open in new tab -->
 #### Session 1 - Four Pillars of AI 
-- ✅ Assignment 1: ![Elevator Pitch : Logistic Regression](https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/logistic-regression/) 
+- ✅ Assignment 1: [Elevator Pitch : Logistic Regression](https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/logistic-regression/) 
 #### Session 2 - Language of AI
 - Assignment 1: The Geometric Interpreter
 - Assignment 2: The Analogy Architect
