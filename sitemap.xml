@@ -1,39 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tech4alltraining.github.io/asap-aiml/blog.html</loc>
-    <lastmod>2025-12-12T04:12:24.676Z</lastmod>
+    <loc>https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/logistic-regression/index.html</loc>
+    <lastmod>2025-12-13T01:06:52.110Z</lastmod>
   </url>
   <url>
-    <loc>https://tech4alltraining.github.io/asap-aiml/index.html</loc>
-    <lastmod>2025-12-12T04:12:24.686Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tech4alltraining.github.io/asap-aiml/workshops.html</loc>
-    <lastmod>2025-12-12T04:12:24.686Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tech4alltraining.github.io/asap-aiml/posts/post_with_code.html</loc>
-    <lastmod>2025-12-12T04:12:24.686Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tech4alltraining.github.io/asap-aiml/posts/post.html</loc>
-    <lastmod>2025-12-12T04:12:24.686Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tech4alltraining.github.io/asap-aiml/posts/another_post.html</loc>
-    <lastmod>2025-12-12T04:12:24.686Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tech4alltraining.github.io/asap-aiml/papers.html</loc>
-    <lastmod>2025-12-12T04:12:24.686Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tech4alltraining.github.io/asap-aiml/logistic.html</loc>
-    <lastmod>2025-12-12T17:13:45.768Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tech4alltraining.github.io/asap-aiml/about.html</loc>
-    <lastmod>2025-12-12T04:12:24.676Z</lastmod>
+    <loc>https://tech4alltraining.github.io/aiml-asap-tot/index.html</loc>
+    <lastmod>2025-12-13T01:08:57.525Z</lastmod>
   </url>
 </urlset>

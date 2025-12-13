@@ -1,1 +1,1 @@
-Sitemap: https://tech4alltraining.github.io/asap-aiml/sitemap.xml
+Sitemap: https://tech4alltraining.github.io/aiml-asap-tot/sitemap.xml
