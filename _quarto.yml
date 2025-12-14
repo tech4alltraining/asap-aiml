@@ -8,8 +8,8 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: pages/slt/logistic-regression/index.qmd
-        text: Logistic Regression
+      # - href: pages/slt/logistic-regression/index.qmd
+      #   text: Logistic Regression
   sidebar:
     style: "docked"
     logo: "./images/aiml_logo.png"
@@ -19,6 +19,9 @@ website:
       - icon: logistic
         text: Logistic Regression
         href: pages/slt/logistic-regression/index.qmd
+      - icon: svm
+        text: SVM & LA
+        href: pages/slt/svm/index.qmd
   announcement: 
     icon: info-circle
     dismissable: true

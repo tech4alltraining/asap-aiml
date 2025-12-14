@@ -1,5 +1,56 @@
 [
   {
+    "objectID": "pages/slt/svm/index.html#what-is-svm-the-widest-street-algorithm",
+    "href": "pages/slt/svm/index.html#what-is-svm-the-widest-street-algorithm",
+    "title": "🎓 Support Vector Machines (SVM) and Linear Algebra",
+    "section": "🎯 What is SVM? (The “Widest Street” Algorithm)",
+    "text": "🎯 What is SVM? (The “Widest Street” Algorithm)\nWhile Logistic Regression focuses on probability, SVM focuses on geometry. Its goal is not just to separate two classes, but to separate them with the widest possible gap.\n\nAnalogy: The Demilitarized Zone (DMZ)\nImagine two warring countries (Class A and Class B). A peace treaty requires a border between them. * Bad Border (Logistic Regression might pick this): A line that runs right next to a Class A village. It’s technically correct, but risky. * SVM Border: SVM looks for the “widest possible river” or DMZ that can fit between the closest villages of both countries. The center of this river is the decision boundary. * Support Vectors: These are the specific villages (data points) located right on the edge of the river. They “support” or define the boundary. If you move the other villages, the border doesn’t change. If you move the Support Vectors, the border moves.",
+    "crumbs": [
+      "Home",
+      "SVM & LA"
+    ]
+  },
+  {
+    "objectID": "pages/slt/svm/index.html#the-linear-algebra-perspective-data-as-vectors",
+    "href": "pages/slt/svm/index.html#the-linear-algebra-perspective-data-as-vectors",
+    "title": "🎓 Support Vector Machines (SVM) and Linear Algebra",
+    "section": "🏗️ 1. The Linear Algebra Perspective: Data as Vectors",
+    "text": "🏗️ 1. The Linear Algebra Perspective: Data as Vectors\nIn SVM, Linear Algebra is not just a container; it is the logic of the entire algorithm.\n\nA. Data Representation (Vectors and Matrices)\nEvery data point is a vector in space. * The Input (\\(x\\)): A vector pointing from the origin \\((0,0)\\) to the data point’s location. * The “Street” Normal (\\(w\\)): A vector that is perpendicular (at 90 degrees) to the boundary line. It dictates the orientation of the street. * The “Street” Position (\\(b\\)): A scalar that dictates the position of the street relative to the origin.\n\n\nB. The Geometric Interpretation (The Hyperplane)\nThe decision boundary is defined by the Linear Algebra equation of a hyperplane:\n\\[w \\cdot x + b = 0\\]\n\n\\(w \\cdot x\\) (The Dot Product): This is the projection of the data point \\(x\\) onto the direction \\(w\\). It measures “how far” the point is in the direction of the street’s orientation.\nThe Decision:\n\nIf \\(w \\cdot x + b &gt; 0\\), the point is on the “Positive” side.\nIf \\(w \\cdot x + b &lt; 0\\), the point is on the “Negative” side.",
+    "crumbs": [
+      "Home",
+      "SVM & LA"
+    ]
+  },
+  {
+    "objectID": "pages/slt/svm/index.html#linear-transformations-the-kernel-trick",
+    "href": "pages/slt/svm/index.html#linear-transformations-the-kernel-trick",
+    "title": "🎓 Support Vector Machines (SVM) and Linear Algebra",
+    "section": "🔮 2. Linear Transformations: The Kernel Trick",
+    "text": "🔮 2. Linear Transformations: The Kernel Trick\nThis is where SVM becomes magical using Linear Algebra. Sometimes, data cannot be separated by a straight line (e.g., a red circle inside a blue ring).\n\nThe Concept: Mapping to Higher Dimensions\nWe use a function \\(\\phi(x)\\) to transform our input vector \\(x\\) (2D) into a higher-dimensional vector \\(z\\) (3D or more).\n\nAnalogy: If you have red and blue marbles mixed on a flat table (2D) and can’t separate them with a stick, you can slap the table (add energy/dimension). The red marbles (lighter) fly higher than the blue ones. Now, you can slide a flat sheet (hyperplane) between the red and blue marbles in mid-air (3D).\n\n\n\nThe Math: Dot Products as Similarity\nSVM relies entirely on the Dot Product (\\(x_i \\cdot x_j\\)). The dot product is a measure of geometric similarity. * If two vectors point in the same direction, their dot product is large. * If they are perpendicular, it is zero.\nThe Kernel Function \\(K(x_i, x_j)\\) allows us to calculate the dot product in that high-dimensional “mid-air” space without actually doing the math to send the points there. This is the “Trick.”",
+    "crumbs": [
+      "Home",
+      "SVM & LA"
+    ]
+  },
+  {
+    "objectID": "pages/slt/svm/index.html#eigenvalues-and-the-gram-matrix",
+    "href": "pages/slt/svm/index.html#eigenvalues-and-the-gram-matrix",
+    "title": "🎓 Support Vector Machines (SVM) and Linear Algebra",
+    "section": "🧩 3. Eigenvalues and The Gram Matrix",
+    "text": "🧩 3. Eigenvalues and The Gram Matrix\nYou asked how Eigenvalues appear. They are critical to the validity of the Kernel.\nFor a Kernel (like the Gaussian/RBF kernel) to be valid, the matrix of all dot products between all data points (called the Gram Matrix or Kernel Matrix, \\(K\\)) must be Positive Semi-Definite (PSD).\n\nVisualizing the Gram Matrix (\\(K\\))\nImagine a spreadsheet where row \\(i\\) and column \\(j\\) contains the similarity score between data point \\(i\\) and data point \\(j\\).\n\\[K = \\begin{bmatrix}\nx_1 \\cdot x_1 & x_1 \\cdot x_2 & \\dots \\\\\nx_2 \\cdot x_1 & x_2 \\cdot x_2 & \\dots \\\\\n\\vdots & \\vdots & \\ddots\n\\end{bmatrix}\\]\n\n\nThe Role of Eigenvalues (\\(\\lambda\\))\n\nThe Condition: For the math to work (for the optimization to find a unique “best” solution), all Eigenvalues (\\(\\lambda\\)) of this matrix must be non-negative (\\(\\lambda \\ge 0\\)).\nThe Interpretation: If an eigenvalue is negative, it implies a “negative distance” or a twisted space where the geometry breaks down. The eigenvalues guarantee that the high-dimensional space we are mapping to “exists” and behaves like normal Euclidean geometry.",
+    "crumbs": [
+      "Home",
+      "SVM & LA"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Aritificial Intelligence and Machine Learning",
+    "section": "",
+    "text": "This is the home page for the Artificial Intelligence and Machine Learning training program. Here you will find resources, papers, and workshops related to AI and ML. Feel free to explore the site using the navigation bar above."
+  },
+  {
     "objectID": "pages/slt/logistic-regression/index.html",
     "href": "pages/slt/logistic-regression/index.html",
     "title": "🎓 Logistic Regression Essentials",
@@ -42,12 +93,5 @@
       "Home",
       "Logistic Regression"
     ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Aritificial Intelligence and Machine Learning",
-    "section": "",
-    "text": "This is the home page for the Artificial Intelligence and Machine Learning training program. Here you will find resources, papers, and workshops related to AI and ML. Feel free to explore the site using the navigation bar above."
   }
 ]

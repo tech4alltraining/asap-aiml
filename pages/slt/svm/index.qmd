@@ -1,0 +1,79 @@
+#### Session 2: Assignment 1 - The Geometric Interpreter
+
+# 🎓 Support Vector Machines (SVM) and Linear Algebra
+
+<!-- Infographics -->
+![SVM Infographic](images/svm_la.png)
+
+## 🎯 What is SVM? (The "Widest Street" Algorithm)
+
+While Logistic Regression focuses on **probability**, SVM focuses on **geometry**. Its goal is not just to separate two classes, but to separate them with the **widest possible gap**.
+
+### Analogy: The Demilitarized Zone (DMZ)
+Imagine two warring countries (Class A and Class B). A peace treaty requires a border between them.
+* **Bad Border (Logistic Regression might pick this):** A line that runs right next to a Class A village. It's technically correct, but risky.
+* **SVM Border:** SVM looks for the "widest possible river" or DMZ that can fit between the closest villages of both countries. The center of this river is the decision boundary.
+* **Support Vectors:** These are the specific villages (data points) located right on the edge of the river. They "support" or define the boundary. If you move the other villages, the border doesn't change. If you move the Support Vectors, the border moves.
+
+---
+
+## 🏗️ 1. The Linear Algebra Perspective: Data as Vectors
+
+In SVM, Linear Algebra is not just a container; it is the logic of the entire algorithm.
+
+### A. Data Representation (Vectors and Matrices)
+Every data point is a **vector** in space.
+* **The Input ($x$):** A vector pointing from the origin $(0,0)$ to the data point's location.
+* **The "Street" Normal ($w$):** A vector that is perpendicular (at 90 degrees) to the boundary line. It dictates the *orientation* of the street.
+* **The "Street" Position ($b$):** A scalar that dictates the *position* of the street relative to the origin.
+
+### B. The Geometric Interpretation (The Hyperplane)
+The decision boundary is defined by the Linear Algebra equation of a **hyperplane**:
+
+$$w \cdot x + b = 0$$
+
+* **$w \cdot x$ (The Dot Product):** This is the **projection** of the data point $x$ onto the direction $w$. It measures "how far" the point is in the direction of the street's orientation.
+* **The Decision:**
+    * If $w \cdot x + b > 0$, the point is on the "Positive" side.
+    * If $w \cdot x + b < 0$, the point is on the "Negative" side.
+
+---
+
+## 🔮 2. Linear Transformations: The Kernel Trick
+
+This is where SVM becomes magical using Linear Algebra. Sometimes, data cannot be separated by a straight line (e.g., a red circle inside a blue ring).
+
+### The Concept: Mapping to Higher Dimensions
+We use a function $\phi(x)$ to transform our input vector $x$ (2D) into a higher-dimensional vector $z$ (3D or more).
+
+* **Analogy:** If you have red and blue marbles mixed on a flat table (2D) and can't separate them with a stick, you can **slap the table** (add energy/dimension). The red marbles (lighter) fly higher than the blue ones. Now, you can slide a flat sheet (hyperplane) between the red and blue marbles in mid-air (3D).
+
+### The Math: Dot Products as Similarity
+SVM relies entirely on the **Dot Product** ($x_i \cdot x_j$). The dot product is a measure of **geometric similarity**.
+* If two vectors point in the same direction, their dot product is large.
+* If they are perpendicular, it is zero.
+
+The **Kernel Function** $K(x_i, x_j)$ allows us to calculate the dot product in that high-dimensional "mid-air" space *without actually doing the math to send the points there*. This is the "Trick."
+
+---
+
+## 🧩 3. Eigenvalues and The Gram Matrix
+
+You asked how Eigenvalues appear. They are critical to the **validity** of the Kernel.
+
+For a Kernel (like the Gaussian/RBF kernel) to be valid, the matrix of all dot products between all data points (called the **Gram Matrix** or Kernel Matrix, $K$) must be **Positive Semi-Definite (PSD)**.
+
+### Visualizing the Gram Matrix ($K$)
+Imagine a spreadsheet where row $i$ and column $j$ contains the similarity score between data point $i$ and data point $j$.
+
+$$K = \begin{bmatrix}
+x_1 \cdot x_1 & x_1 \cdot x_2 & \dots \\
+x_2 \cdot x_1 & x_2 \cdot x_2 & \dots \\
+\vdots & \vdots & \ddots
+\end{bmatrix}$$
+
+### The Role of Eigenvalues ($\lambda$)
+* **The Condition:** For the math to work (for the optimization to find a unique "best" solution), all **Eigenvalues ($\lambda$) of this matrix must be non-negative ($\lambda \ge 0$)**.
+* **The Interpretation:** If an eigenvalue is negative, it implies a "negative distance" or a twisted space where the geometry breaks down. The eigenvalues guarantee that the high-dimensional space we are mapping to "exists" and behaves like normal Euclidean geometry.
+
+---
