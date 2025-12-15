@@ -165,21 +165,21 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../pages/slt/logistic-regression/index.html" class="sidebar-item-text sidebar-link"><i class="bi bi-home" role="img">
+  <a href="../../../../pages/slt/logistic-regression/index.html" class="sidebar-item-text sidebar-link"><i class="bi bi-bar-chart-line" role="img">
 </i> 
  <span class="menu-text">Logistic Regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../pages/slt/svm/index.html" class="sidebar-item-text sidebar-link"><i class="bi bi-cogs" role="img">
+  <a href="../../../../pages/slt/svm/index.html" class="sidebar-item-text sidebar-link"><i class="bi bi-back" role="img">
 </i> 
  <span class="menu-text">SVM &amp; LA</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../pages/slt/mathematics/linear-algebra/analogy-1.html" class="sidebar-item-text sidebar-link active"><i class="bi bi-th-large" role="img">
+  <a href="../../../../pages/slt/mathematics/linear-algebra/analogy-1.html" class="sidebar-item-text sidebar-link active"><i class="bi bi-backpack-fill" role="img">
 </i> 
  <span class="menu-text">Analogies LA</span></a>
   </div>
@@ -417,7 +417,7 @@ P \times
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/tech4alltraining\.github\.io\/aiml-asap-tot\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

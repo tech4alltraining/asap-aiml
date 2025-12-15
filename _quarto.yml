@@ -16,13 +16,13 @@ website:
     search: true
     collapse-level: 2
     contents:
-      - icon: home
+      - icon: bar-chart-line
         text: Logistic Regression
         href: pages/slt/logistic-regression/index.qmd
-      - icon: cogs
+      - icon: back
         text: SVM & LA
         href: pages/slt/svm/index.qmd
-      - icon: th-large
+      - icon: backpack-fill
         text: Analogies LA
         href: pages/slt/mathematics/linear-algebra/analogy-1.qmd
       - icon: map
