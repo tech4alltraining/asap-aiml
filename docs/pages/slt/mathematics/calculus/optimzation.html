@@ -400,7 +400,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-race-script-sgd-vs.-momentum-vs.-adam" class="level3">
 <h3 class="anchored" data-anchor-id="the-race-script-sgd-vs.-momentum-vs.-adam">🏁 The Race Script: SGD vs.&nbsp;Momentum vs.&nbsp;Adam</h3>
-<div id="d3d21bbb" class="cell" data-execution_count="1">
+<div id="9e73f2d7" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
@@ -487,13 +487,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.3.5 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11&gt;=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy&lt;2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "&lt;frozen runpy&gt;", line 198, in _run_module_as_main
+  File "&lt;frozen runpy&gt;", line 88, in _run_code
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/ipykernel_launcher.py", line 18, in &lt;module&gt;
+    app.launch_new_instance()
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/ipykernel/kernelapp.py", line 758, in start
+    self.io_loop.start()
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/tornado/platform/asyncio.py", line 211, in start
+    self.asyncio_loop.run_forever()
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+    self._run_once()
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/asyncio/base_events.py", line 1999, in _run_once
+    handle._run()
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/ipykernel/kernelbase.py", line 614, in shell_main
+    await self.dispatch_shell(msg, subshell_id=subshell_id)
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/ipykernel/kernelbase.py", line 471, in dispatch_shell
+    await result
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/ipykernel/ipkernel.py", line 366, in execute_request
+    await super().execute_request(stream, ident, parent)
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/ipykernel/kernelbase.py", line 827, in execute_request
+    reply_content = await reply_content
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/ipykernel/ipkernel.py", line 458, in do_execute
+    res = shell.run_cell(
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/ipykernel/zmqshell.py", line 663, in run_cell
+    return super().run_cell(*args, **kwargs)
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/IPython/core/interactiveshell.py", line 3123, in run_cell
+    result = self._run_cell(
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/IPython/core/interactiveshell.py", line 3178, in _run_cell
+    result = runner(coro)
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/IPython/core/async_helpers.py", line 128, in _pseudo_sync_runner
+    coro.send(None)
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/IPython/core/interactiveshell.py", line 3400, in run_cell_async
+    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/IPython/core/interactiveshell.py", line 3641, in run_ast_nodes
+    if await self.run_code(code, result, async_=asy):
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/IPython/core/interactiveshell.py", line 3701, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "/var/folders/ls/qkb453bd3xl7c7yp9n0rszdh0000gn/T/ipykernel_12332/1151517320.py", line 1, in &lt;module&gt;
+    import torch
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/torch/__init__.py", line 1477, in &lt;module&gt;
+    from .functional import *  # noqa: F403
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/torch/functional.py", line 9, in &lt;module&gt;
+    import torch.nn.functional as F
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/torch/nn/__init__.py", line 1, in &lt;module&gt;
+    from .modules import *  # noqa: F403
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/torch/nn/modules/__init__.py", line 35, in &lt;module&gt;
+    from .transformer import TransformerEncoder, TransformerDecoder, \
+  File "/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/torch/nn/modules/transformer.py", line 20, in &lt;module&gt;
+    device: torch.device = torch.device(torch._C._get_default_device()),  # torch.device('cpu'),
+/Users/ahk/miniconda/envs/quarto/lib/python3.12/site-packages/torch/nn/modules/transformer.py:20: UserWarning:
+
+Failed to initialize NumPy: _ARRAY_API not found (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>🏁 Starting the race...</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="optimzation_files/figure-html/cell-2-output-2.png" width="812" height="523" class="figure-img"></p>
+<p><img src="optimzation_files/figure-html/cell-2-output-3.png" width="812" height="523" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -589,7 +657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/tech4alltraining\.github\.io\/aiml-asap-tot\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
