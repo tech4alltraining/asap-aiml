@@ -34,6 +34,9 @@ website:
       - icon: book-half
         text: Backpropagation Storyteller
         href: pages/slt/mathematics/calculus/back-propagation.qmd
+      - icon: rocket
+        text: Optimization Strategist
+        href: pages/slt/mathematics/calculus/optimzation.qmd
   announcement: 
     icon: info-circle
     dismissable: true

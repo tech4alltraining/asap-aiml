@@ -8,7 +8,7 @@
 #### Session 3: Engine of Learning
 - ⏳ Assignment 1: [The Gradient Explorer](https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/mathematics/calculus/gradient-explorer.qmd)
 - ⏳ Assignment 2: [The Backpropagation Storyteller](https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/mathematics/calculus/back-propagation.qmd)
-- ⏳ Assignment 3: The Optimization Strategist
+- ⏳ Assignment 3: [The Optimization Strategist](https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/mathematics/calculus/optimization.qmd)
 #### Session 4: The Science of Uncertainty
 - ⏳ Assignment 1: The Bayesian Investigator
 - ⏳ Assignment 2: The Uncertainty Quantifier

@@ -1,0 +1,181 @@
+#### Session 3 | Assignment 3| The Optimization Strategist
+
+# The Optimization Strategist
+## The Scenario: "The Misty Mountain Descent"
+
+![optimization](images/optimization.jpg)
+
+Imagine three different hikers are dropped at a random spot high up on a foggy mountain range. Their goal is to find the lowest valley (the Global Minimum) where the village (Optimal Solution) is located. They cannot see the map; they can only feel the slope under their feet.
+
+The three hikers are **Mr. SGD**, **Ms. Momentum**, and **Dr. Adam**.
+
+---
+
+## 1. The Competitors (The Algorithms)
+
+### 🚶 Mr. SGD (Stochastic Gradient Descent)
+
+* **The Strategy:** He takes a single small step, looks at the ground right beneath his feet, calculates the slope, and takes a step downhill. He repeats this thousands of times.
+* **The Analogy:** A careful but slightly erratic walker. Because he looks at only a small patch of ground (a "batch" of data) at a time, he zig-zags a lot. If the terrain is bumpy, he might get thrown off course easily.
+
+### ⛷️ Ms. Momentum
+
+* **The Strategy:** She remembers her previous steps. If she has been moving downhill for a while, she builds up speed (velocity). Even if she hits a small bump or a flat patch, her built-up inertia carries her through.
+* **The Analogy:** A heavy bowling ball rolling down the hill. She gains speed and cuts through the noise. She doesn't zig-zag as much because her momentum keeps her moving in the general right direction.
+
+### 🧠 Dr. Adam (Adaptive Moment Estimation)
+
+* **The Strategy:** He is the smartest hiker. He keeps track of two things:
+1. **Momentum:** Like Ms. Momentum, he knows the general direction he's been heading.
+2. **Terrain Adaptation:** He notices if the slope is changing wildly or is steady. If the terrain is rough and unpredictable (high variance), he takes smaller, careful steps. If the terrain is smooth and steady, he takes larger, confident strides.
+
+
+* **The Analogy:** A high-tech rover with adaptive suspension. He adjusts his speed and stability for every single dimension of the terrain individually.
+
+---
+
+## 2. Comparative Analysis
+
+Here is how they perform on a standard classification task (like classifying images of cats and dogs).
+
+| Feature | 🚶 SGD | ⛷️ Momentum | 🧠 Adam |
+| --- | --- | --- | --- |
+| **Convergence Speed** | **Slow.** It takes many small, noisy steps to get to the bottom. | **Fast.** Accelerates through flat areas and dampens oscillations. | **Fastest.** The adaptive learning rate allows it to jump quickly toward the solution early on. |
+| **Final Performance** | **Good (eventually).** Can settle into a very precise minimum if given enough time and a scheduled learning rate decay. | **Better.** Often finds better solutions than SGD because it powers through shallow local minima. | **Excellent.** Generally achieves high accuracy very quickly, though sometimes SGD generalizes slightly better at the very end. |
+| **Sensitivity to Learning Rate** | **High.** Very sensitive. If the rate is too high, it diverges; too low, it never finishes. Requires constant manual tuning. | **Medium.** The momentum term stabilizes it, but you still need to tune the learning rate carefully. | **Low.** Very robust. The default learning rate (usually 0.001) works for a vast majority of problems without tuning. |
+| **Computational Cost** | **Lowest.** Very simple math (subtraction and multiplication). Uses minimal memory. | **Low/Medium.** Needs to store a velocity vector (doubles memory for gradients). | **Medium/High.** Needs to store moving averages of gradients and squared gradients (triples memory for gradients). |
+
+---
+
+## 3. Visualizing the Descent
+
+* **SGD** creates a **zig-zag path**, bouncing off the walls of the valley on its way down.
+* **Momentum** creates a **smoother curve**. It might overshoot the bottom slightly (like a ball rolling up the other side) but settles back down quickly.
+* **Adam** creates a **direct line**. It acts like a guided missile, adjusting its trajectory immediately to head straight for the center.
+
+---
+
+## 4. The Strategist's Verdict: When to Choose Which?
+
+### ✅ Choose **Adam** when:
+
+* **You want results fast:** It is the "default" choice for most deep learning projects today (Transformers, CNNs).
+* **You don't want to tune hyperparameters:** You want to press "train" and get a good result without spending days finding the perfect learning rate.
+* **The data is sparse:** (e.g., NLP tasks) where some features appear very rarely. Adam's adaptive nature handles this perfectly.
+
+### ✅ Choose **SGD (+ Momentum)** when:
+
+* **You need absolute state-of-the-art precision:** In some computer vision research papers, SGD (with careful tuning) is shown to generalize slightly better than Adam on the test set.
+* **Memory is extremely tight:** If you are running a massive model on a small device, the lower memory footprint of SGD might be necessary.
+
+### ✅ Choose **Momentum** when:
+
+* **You are training on a consistent, smooth landscape:** And you want the speed of acceleration but standard SGD is too slow. (Note: Most modern implementations just use Adam or SGD-with-Momentum; "plain" Momentum is rarely used alone).
+
+---
+
+
+### 🏁 The Race Script: SGD vs. Momentum vs. Adam
+
+
+```{python}
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.datasets import make_moons
+
+# ==========================================
+# 1. SETUP: Create the "Terrain" (Data)
+# ==========================================
+# We generate a "Moon" shaped dataset which is hard for linear models
+X, y = make_moons(n_samples=1000, noise=0.2, random_state=42)
+
+# Convert to PyTorch tensors (The format the hikers understand)
+X_tensor = torch.FloatTensor(X)
+y_tensor = torch.FloatTensor(y).reshape(-1, 1)
+
+# ==========================================
+# 2. THE HIKER (The Model Architecture)
+# ==========================================
+# A simple neural network with one hidden layer
+def get_model():
+    model = nn.Sequential(
+        nn.Linear(2, 50),   # Input: 2 coordinates -> Hidden: 50 neurons
+        nn.ReLU(),          # Activation
+        nn.Linear(50, 1),   # Hidden: 50 neurons -> Output: 1 prediction
+        nn.Sigmoid()        # Probability (0 to 1)
+    )
+    return model
+
+# ==========================================
+# 3. THE RACE (Training Loop)
+# ==========================================
+def train_model(optimizer_name, learning_rate=0.01):
+    model = get_model()
+    criterion = nn.BCELoss() # Binary Cross Entropy Loss
+    
+    # Assign the specific Hiker (Optimizer)
+    if optimizer_name == "SGD":
+        optimizer = optim.SGD(model.parameters(), lr=learning_rate)
+    elif optimizer_name == "Momentum":
+        optimizer = optim.SGD(model.parameters(), lr=learning_rate, momentum=0.9)
+    elif optimizer_name == "Adam":
+        optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+        
+    losses = []
+    
+    # The Race: 100 Steps (Epochs)
+    for epoch in range(100):
+        # 1. Forward Pass (Make prediction)
+        outputs = model(X_tensor)
+        loss = criterion(outputs, y_tensor)
+        
+        # 2. Backward Pass (Calculate Gradient)
+        optimizer.zero_grad()
+        loss.backward()
+        
+        # 3. Step (Update Weights)
+        optimizer.step()
+        
+        losses.append(loss.item())
+        
+    return losses
+
+# ==========================================
+# 4. RUNNING THE RACE
+# ==========================================
+print("🏁 Starting the race...")
+loss_sgd = train_model("SGD")
+loss_momentum = train_model("Momentum")
+loss_adam = train_model("Adam")
+
+# ==========================================
+# 5. VISUALIZING THE FINISH LINE
+# ==========================================
+plt.figure(figsize=(10, 6))
+plt.plot(loss_sgd, label='SGD (The Walker)', linestyle='--', color='red')
+plt.plot(loss_momentum, label='Momentum (The Bowler)', linestyle='-.', color='blue')
+plt.plot(loss_adam, label='Adam (The Rover)', linewidth=3, color='green')
+
+plt.title('The Optimization Race: Loss over Time')
+plt.xlabel('Steps (Epochs)')
+plt.ylabel('Loss (Error)')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
+
+```
+
+---
+
+### 📊 What You Will See (The Analysis)
+
+When you run this, the graph will reveal the distinct personalities of our hikers:
+
+1. **The Green Line (Adam):** You will see this line drop **vertically** right at the start. It adapts immediately and reaches a low error (near 0.3) within just 10-15 steps. It is the clear winner in the sprint.
+2. **The Blue Line (Momentum):** This line will start slower than Adam but will pick up speed. By step 40 or 50, it often catches up to Adam. The curve is smooth, showing how the "velocity" helps it plow through the data.
+3. **The Red Line (SGD):** This line will likely descend very slowly. It might look like a gentle slope. In 100 steps, it may barely reach the error level that Adam reached in step 5. This visually demonstrates why standard SGD is rarely used without help in modern Deep Learning.
+
+**Takeaway:** This simulation proves why **Adam** is the default "Go-To" for quick prototyping, while **Momentum** is essential if you stick with SGD.
